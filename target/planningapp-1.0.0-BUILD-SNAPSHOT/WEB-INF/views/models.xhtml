@@ -1,0 +1,63 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:ui="http://java.sun.com/jsf/facelets">
+ 
+ <h2>Add Course:</h2>
+ <h:form>
+    <!--   <h:outputLabel value="ID:" for="ID"/>
+     <h:inputText value="#{option.ID}" id="ID"/> <br/>
+     <h:outputLabel value="Maturity:" for="Maturity"/>
+     <h:inputText value="#{option.maturity}" id="Maturity"/> <br/>
+     <h:outputLabel value="Option Type:" for="Option_type"/>
+     <h:inputText value="#{option.option_type}" id="Option_type"/> <br/>
+     <h:outputLabel value="Strike:" for="Strike"/>
+     <h:inputText value="#{option.strike}" id="Strike"/> <br/>
+     <h:outputLabel value="Underlying Name:" for="Underlying_Name"/>
+     <h:inputText value="#{option.underlying_Name}" id="Underlying_Name"/><br/>-->
+
+     
+     <table class="order-table">
+    		<tr>
+    			<th class="order-table-header">ID</th>
+    			<th class="order-table-header">Model Name</th>
+    			<th class="order-table-header">Category</th>
+    			<th class="order-table-header">Origination Area</th>
+    			<th class="order-table-header">Risk</th>
+    			<th class="order-table-header">Last Validation</th>
+    			<th class="order-table-header">Last Model Review</th>
+    			<th class="order-table-header">Validated?</th>
+    		</tr>
+    		<tbody>
+	    		<ui:repeat var="model" value="#{models}" varStatus="status">
+	    			<h:panelGroup rendered="#{status.even}">
+	   			      <tr>
+		    			<td class="order-table-even-row">#{model.ID}</td>
+		    			<td class="order-table-even-row">#{model.name}</td>
+		    			<td class="order-table-even-row">#{model.category}</td>
+		    			<td class="order-table-even-row">#{model.origination_area}</td>
+		    			<td class="order-table-even-row">#{model.risk}</td>
+		    			<td class="order-table-even-row">#{model.val_so}</td>
+		    			<td class="order-table-even-row">#{model.amr_so}</td>
+		    			<td class="order-table-even-row">#{model.is_validated}</td>
+		    		  </tr>
+	    			</h:panelGroup>
+	    		        <h:panelGroup rendered="#{status.odd}">
+	    			  <tr>
+		    			<td class="order-table-even-row">#{model.ID}</td>
+		    			<td class="order-table-even-row">#{model.name}</td>
+		    			<td class="order-table-even-row">#{model.category}</td>
+		    			<td class="order-table-even-row">#{model.origination_area}</td>
+		    			<td class="order-table-even-row">#{model.risk}</td>
+		    			<td class="order-table-even-row">#{model.val_so}</td>
+		    			<td class="order-table-even-row">#{model.amr_so}</td>
+		    			<td class="order-table-even-row">#{model.is_validated}</td>
+		    		  </tr>
+	    			</h:panelGroup>
+	    		</ui:repeat>
+    		</tbody>
+    	</table>
+     <h:commandButton value="Add" action="#{optionService.addOption}" style="width: 88px; height: 33px; "/>
+     <h:commandButton value="Check" action="#{connect2DB.checkConnection}" style="width: 88px; height: 33px; "/>
+ </h:form>
+</html>
